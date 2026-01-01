@@ -1,0 +1,128 @@
+{
+  "info": {
+    "name": "Shared Clipboard API",
+    "description": "Collection of API endpoints for the Shared Clipboard application",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Root",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": [""]
+        },
+        "description": "Get API information and available endpoints"
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        },
+        "description": "Check if the API is running and healthy"
+      }
+    },
+    {
+      "name": "Create New Clipboard",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/clipboard/new",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["clipboard", "new"]
+        },
+        "description": "Create a new clipboard with a unique ID. Save the returned ID for subsequent requests."
+      }
+    },
+    {
+      "name": "Get Clipboard Content",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/clipboard/{{clipboard_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["clipboard", "{{clipboard_id}}"]
+        },
+        "description": "Retrieve the content of a clipboard by its ID. Replace {{clipboard_id}} with an actual clipboard ID."
+      }
+    },
+    {
+      "name": "Update Clipboard Content",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"This is my shared clipboard content. Anyone with this clipboard ID can read and update this text.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/clipboard/{{clipboard_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["clipboard", "{{clipboard_id}}"]
+        },
+        "description": "Update the content of an existing clipboard. Replace {{clipboard_id}} with an actual clipboard ID."
+      }
+    },
+    {
+      "name": "Get Non-Existent Clipboard (Error Test)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/clipboard/invalid-id-12345",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["clipboard", "invalid-id-12345"]
+        },
+        "description": "Test error handling by trying to get a non-existent clipboard. Should return 404."
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "clipboard_id",
+      "value": "",
+      "type": "string",
+      "description": "The unique ID of a clipboard. Set this after creating a new clipboard."
+    },
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string",
+      "description": "Base URL for the API"
+    }
+  ]
+}

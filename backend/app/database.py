@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 
 # SQLite database URL
-SQLALCHEMY_DATABASE_URL = "sqlite:///./clipboard.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:////clipboard.db"
 
 # Create engine
 engine = create_engine(

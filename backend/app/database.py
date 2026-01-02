@@ -22,7 +22,6 @@ load_dotenv(dotenv_path=env_path)
 DATABASE_URI = os.getenv("DATABASE_URI")
 
 SQLALCHEMY_DATABASE_URL = DATABASE_URI
-`
 # Create engine
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

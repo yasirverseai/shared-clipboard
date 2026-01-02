@@ -1,4 +1,7 @@
 from datetime import datetime
+from dotenv import load_dotenv
+from pathlib import Path
+import os
 
 from sqlalchemy import (
     Column,
@@ -13,11 +16,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 
 # SQLite database URL
-SQLALCHEMY_DATABASE_URL = "sqlite:////clipboard.db"
+env_path = Path(__file__).resolve().parents[1] / ".env"
+load_dotenv(dotenv_path=env_path)
 
+DATABASE_URI = os.getenv("DATABASE_URI")
+
+SQLALCHEMY_DATABASE_URL = DATABASE_URI
+`
 # Create engine
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL
 )
 
 # Create SessionLocal class

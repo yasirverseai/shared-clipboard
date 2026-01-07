@@ -64,7 +64,6 @@ frontend/
 - **Copy to Clipboard** - One-click copy for content and share links
 - **Download Content** - Export clipboard as text file
 - **Responsive Design** - Works on desktop, tablet, and mobile
-- **Dark Mode Ready** - UI supports dark mode
 - **Material Icons** - Modern icon system
 
 ## 🔧 Configuration

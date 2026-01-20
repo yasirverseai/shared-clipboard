@@ -48,7 +48,7 @@ export function Header() {
               className="text-muted-foreground hover:text-foreground"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/yasirverseai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="gap-1.5"
